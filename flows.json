@@ -13,7 +13,7 @@
         "name": "TechCrunch",
         "url": "https://feeds.feedburner.com/TechCrunch/",
         "interval": "1",
-        "x": 240,
+        "x": 230,
         "y": 480,
         "wires": [
             [
@@ -114,6 +114,141 @@
         "interval": "1",
         "x": 240,
         "y": 540,
+        "wires": [
+            [
+                "5018e2e1.8e14bc"
+            ]
+        ]
+    },
+    {
+        "id": "4f5018e8.df20f8",
+        "type": "feedparse",
+        "z": "3af82246.3634ae",
+        "name": "Techmeme",
+        "url": "https://www.techmeme.com/feed.xml?x=1",
+        "interval": "1",
+        "x": 220,
+        "y": 600,
+        "wires": [
+            [
+                "5018e2e1.8e14bc"
+            ]
+        ]
+    },
+    {
+        "id": "73992633.3291a8",
+        "type": "feedparse",
+        "z": "3af82246.3634ae",
+        "name": "Tech-Lab-Ars-Technica",
+        "url": "http://feeds.arstechnica.com/arstechnica/technology-lab",
+        "interval": "1",
+        "x": 180,
+        "y": 640,
+        "wires": [
+            [
+                "5018e2e1.8e14bc"
+            ]
+        ]
+    },
+    {
+        "id": "125abd0b.665c03",
+        "type": "feedparse",
+        "z": "3af82246.3634ae",
+        "name": "ReadWrite",
+        "url": "https://readwrite.com/feed/?x=1",
+        "interval": "1",
+        "x": 230,
+        "y": 740,
+        "wires": [
+            [
+                "5018e2e1.8e14bc"
+            ]
+        ]
+    },
+    {
+        "id": "79410a5b.dbcabc",
+        "type": "feedparse",
+        "z": "3af82246.3634ae",
+        "name": "VentureBeat",
+        "url": "http://feeds.feedburner.com/venturebeat/SZYF",
+        "interval": "1",
+        "x": 180,
+        "y": 820,
+        "wires": [
+            [
+                "5018e2e1.8e14bc"
+            ]
+        ]
+    },
+    {
+        "id": "807b51d1.37c13",
+        "type": "feedparse",
+        "z": "3af82246.3634ae",
+        "name": "Recode",
+        "url": "https://www.vox.com/rss/recode/index.xml",
+        "interval": "1",
+        "x": 180,
+        "y": 920,
+        "wires": [
+            [
+                "5018e2e1.8e14bc"
+            ]
+        ]
+    },
+    {
+        "id": "ee35527b.ca802",
+        "type": "feedparse",
+        "z": "3af82246.3634ae",
+        "name": "Vergecast",
+        "url": "https://feeds.megaphone.fm/vergecast",
+        "interval": "1",
+        "x": 170,
+        "y": 1000,
+        "wires": [
+            [
+                "5018e2e1.8e14bc"
+            ]
+        ]
+    },
+    {
+        "id": "4ae1262.a5cf658",
+        "type": "feedparse",
+        "z": "3af82246.3634ae",
+        "name": "Wired",
+        "url": "https://www.wired.com/feed/rss",
+        "interval": "1",
+        "x": 180,
+        "y": 1080,
+        "wires": [
+            [
+                "5018e2e1.8e14bc"
+            ]
+        ]
+    },
+    {
+        "id": "3509caa6.c8af46",
+        "type": "feedparse",
+        "z": "3af82246.3634ae",
+        "name": "FreeTech4Teachers",
+        "url": "http://feeds.feedblitz.com/freetech4teachers",
+        "interval": "1",
+        "x": 200,
+        "y": 1160,
+        "wires": [
+            [
+                "5018e2e1.8e14bc"
+            ]
+        ]
+    },
+    {
+        "id": "f3633242.b2fbc",
+        "type": "feedparse",
+        "z": "3af82246.3634ae",
+        "name": "NYTimes-Technology",
+        "url": "http://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+        "interval": "1",
+        "x": 230,
+        "y": 1240,
         "wires": [
             [
                 "5018e2e1.8e14bc"

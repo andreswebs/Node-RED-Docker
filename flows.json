@@ -7,6 +7,13 @@
         "info": "RSS Reader"
     },
     {
+        "id": "c10c1a61.d89b",
+        "type": "tab",
+        "label": "hello",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "c6b804cb.64eaf8",
         "type": "feedparse",
         "z": "3af82246.3634ae",
@@ -254,5 +261,60 @@
                 "5018e2e1.8e14bc"
             ]
         ]
+    },
+    {
+        "id": "ae198a9a.52e76",
+        "type": "http in",
+        "z": "c10c1a61.d89b",
+        "name": "",
+        "url": "/hello",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "117aa462.af7684"
+            ]
+        ]
+    },
+    {
+        "id": "117aa462.af7684",
+        "type": "change",
+        "z": "c10c1a61.d89b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"text\":\"Hello\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 120,
+        "wires": [
+            [
+                "323c49a4.29cfee"
+            ]
+        ]
+    },
+    {
+        "id": "323c49a4.29cfee",
+        "type": "http response",
+        "z": "c10c1a61.d89b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 500,
+        "y": 120,
+        "wires": []
     }
 ]

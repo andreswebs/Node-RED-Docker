@@ -14,6 +14,13 @@
         "info": ""
     },
     {
+        "id": "a44ac9e0.5f86a8",
+        "type": "tab",
+        "label": "db-admin",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "c6b804cb.64eaf8",
         "type": "feedparse",
         "z": "3af82246.3634ae",

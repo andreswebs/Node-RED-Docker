@@ -7,18 +7,24 @@
         "info": "RSS Reader"
     },
     {
-        "id": "c10c1a61.d89b",
-        "type": "tab",
-        "label": "hello",
-        "disabled": false,
-        "info": ""
-    },
-    {
         "id": "a44ac9e0.5f86a8",
         "type": "tab",
         "label": "db-admin",
         "disabled": false,
         "info": ""
+    },
+    {
+        "id": "c10c1a61.d89b",
+        "type": "tab",
+        "label": "feed",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "eced12e0.c6b7a",
+        "type": "sqlitedb",
+        "db": "/db/monitor.db",
+        "mode": "RWC"
     },
     {
         "id": "c6b804cb.64eaf8",
@@ -274,11 +280,11 @@
         "type": "http in",
         "z": "c10c1a61.d89b",
         "name": "",
-        "url": "/hello",
+        "url": "/monitor/feed",
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 160,
+        "x": 150,
         "y": 120,
         "wires": [
             [
@@ -305,8 +311,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 330,
-        "y": 120,
+        "x": 500,
+        "y": 140,
         "wires": [
             [
                 "323c49a4.29cfee"
@@ -320,8 +326,196 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 500,
+        "x": 710,
         "y": 120,
         "wires": []
+    },
+    {
+        "id": "600cb358.4c9f04",
+        "type": "sqlite",
+        "z": "a44ac9e0.5f86a8",
+        "mydb": "eced12e0.c6b7a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "db",
+        "x": 430,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ebb28b3c.a65e3",
+        "type": "inject",
+        "z": "a44ac9e0.5f86a8",
+        "name": "create-feed",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE feed (name, url)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 100,
+        "wires": [
+            [
+                "600cb358.4c9f04"
+            ]
+        ]
+    },
+    {
+        "id": "bb62aa88.11d47",
+        "type": "inject",
+        "z": "a44ac9e0.5f86a8",
+        "name": "create-keyword",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE keyword (expression)",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 140,
+        "wires": [
+            [
+                "600cb358.4c9f04"
+            ]
+        ]
+    },
+    {
+        "id": "4d2b7c42.8b8c3c",
+        "type": "inject",
+        "z": "a44ac9e0.5f86a8",
+        "name": "create-match",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE match (link, title, description, sent, UNIQUE(link))",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 180,
+        "wires": [
+            [
+                "600cb358.4c9f04"
+            ]
+        ]
+    },
+    {
+        "id": "b47da6d0.f47968",
+        "type": "inject",
+        "z": "a44ac9e0.5f86a8",
+        "name": "delete-feed",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DROP TABLE feed",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 260,
+        "wires": [
+            [
+                "600cb358.4c9f04"
+            ]
+        ]
+    },
+    {
+        "id": "f6f7307e.e3671",
+        "type": "inject",
+        "z": "a44ac9e0.5f86a8",
+        "name": "delete-keyword",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DROP TABLE keyword",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 300,
+        "wires": [
+            [
+                "600cb358.4c9f04"
+            ]
+        ]
+    },
+    {
+        "id": "ce02013f.c03068",
+        "type": "inject",
+        "z": "a44ac9e0.5f86a8",
+        "name": "delete-match",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DROP TABLE match",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 340,
+        "wires": [
+            [
+                "600cb358.4c9f04"
+            ]
+        ]
     }
 ]

@@ -21,9 +21,9 @@
         "info": ""
     },
     {
-        "id": "eced12e0.c6b7a",
+        "id": "5d0b39f8.fb132",
         "type": "sqlitedb",
-        "db": "/db/monitor.db",
+        "db": "/db/techfeed-monitor.sqlite",
         "mode": "RWC"
     },
     {
@@ -307,7 +307,7 @@
         "id": "600cb358.4c9f04",
         "type": "sqlite",
         "z": "a44ac9e0.5f86a8",
-        "mydb": "eced12e0.c6b7a",
+        "mydb": "5d0b39f8.fb132",
         "sqlquery": "msg.topic",
         "sql": "",
         "name": "db",
@@ -426,7 +426,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 160,
-        "y": 260,
+        "y": 300,
         "wires": [
             [
                 "600cb358.4c9f04"
@@ -455,7 +455,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 180,
-        "y": 300,
+        "y": 340,
         "wires": [
             [
                 "600cb358.4c9f04"
@@ -484,7 +484,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 170,
-        "y": 340,
+        "y": 380,
         "wires": [
             [
                 "600cb358.4c9f04"
@@ -509,5 +509,25 @@
                 "323c49a4.29cfee"
             ]
         ]
+    },
+    {
+        "id": "2373cb03.715aec",
+        "type": "comment",
+        "z": "a44ac9e0.5f86a8",
+        "name": "create tables",
+        "info": "",
+        "x": 170,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "4cbb806.3fb3b",
+        "type": "comment",
+        "z": "a44ac9e0.5f86a8",
+        "name": "drop tables",
+        "info": "",
+        "x": 160,
+        "y": 260,
+        "wires": []
     }
 ]

@@ -37,28 +37,9 @@
         "y": 480,
         "wires": [
             [
-                "b264d03e.08a988",
                 "5018e2e1.8e14bc"
             ]
         ]
-    },
-    {
-        "id": "b264d03e.08a988",
-        "type": "debug",
-        "z": "3af82246.3634ae",
-        "d": true,
-        "name": "msg",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 440,
-        "y": 440,
-        "wires": []
     },
     {
         "id": "5018e2e1.8e14bc",
@@ -114,7 +95,7 @@
         "z": "3af82246.3634ae",
         "name": "matches",
         "active": true,
-        "tosidebar": true,
+        "tosidebar": false,
         "console": false,
         "tostatus": false,
         "complete": "payload",
@@ -288,7 +269,7 @@
         "y": 120,
         "wires": [
             [
-                "7f246660.4a7fe8"
+                "1fdc5671.2d566a"
             ]
         ]
     },
@@ -495,14 +476,14 @@
         "id": "7f246660.4a7fe8",
         "type": "template",
         "z": "c10c1a61.d89b",
-        "name": "",
+        "name": "page",
         "field": "payload",
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "<!DOCTYPE html>\n<html lang=\"en\">\n\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <title>Feed</title>\n    <meta name=\"description\" content=\"\">\n    <meta name=\"keywords\" content=\"\">\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/slate/bootstrap.min.css\" integrity=\"sha384-8iuq0iaMHpnH2vSyvZMSIqQuUnQA7QM+f6srIdlgBrTSEyd//AWNMyEaSF2yPzNQ\" crossorigin=\"anonymous\">\n  </head>\n\n  <body>\n\n    <header>\n    </header>\n\n    <main class=\"container\">\n\n      <h1>Feed</h1>\n      <table class=\"table\">\n        <thead>\n          <tr>\n            <th scope=\"col\">Name</th>\n            <th scope=\"col\">URL</th>\n            <th scope=\"col\"></th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr>\n            <td>Column content</td>\n            <td>Column content</td>\n            <td>Column content</td>\n          </tr>\n        </tbody>\n      </table>\n\n\n    </main>\n\n    <footer>\n    </footer>\n\n  </body>\n\n</html>\n",
+        "template": "<!DOCTYPE html>\n<html lang=\"en\">\n\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <title>Feed</title>\n    <meta name=\"description\" content=\"\">\n    <meta name=\"keywords\" content=\"\">\n    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/slate/bootstrap.min.css\" integrity=\"sha384-8iuq0iaMHpnH2vSyvZMSIqQuUnQA7QM+f6srIdlgBrTSEyd//AWNMyEaSF2yPzNQ\" crossorigin=\"anonymous\">\n  </head>\n\n  <body>\n\n    <header>\n    </header>\n\n    <main class=\"container\">\n\n      <h1>Feed</h1>\n      <table class=\"table\">\n        <thead>\n          <tr>\n            <th scope=\"col\">Name</th>\n            <th scope=\"col\">URL</th>\n            <th scope=\"col\"></th>\n          </tr>\n        </thead>\n        <tbody>\n          {{#payload}}\n          <tr>\n            <td>{{name}}</td>\n            <td>{{url}}</td>\n            <td><a href=\"/monitor/feed/delete/{{rowid}}\" class=\"btn btn-danger\">Remove</a></td>\n          </tr>\n          {{/payload}}\n        </tbody>\n      </table>\n\n      <form method=\"POST\" action=\"/monitor/feed\">\n        <label for=\"name\">Name</label>\n        <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" />\n        <label for=\"url\">URL</label>\n        <input type=\"text\" class=\"form-control\" id=\"url\" name=\"url\" />\n        <button type=\"submit\" class=\"btn btn-primary\">Add</button>\n      </form>\n\n    </main>\n\n    <footer>\n    </footer>\n\n  </body>\n\n</html>\n",
         "output": "str",
-        "x": 440,
+        "x": 550,
         "y": 120,
         "wires": [
             [
@@ -529,5 +510,127 @@
         "x": 160,
         "y": 260,
         "wires": []
+    },
+    {
+        "id": "1fdc5671.2d566a",
+        "type": "sqlite",
+        "z": "c10c1a61.d89b",
+        "mydb": "5d0b39f8.fb132",
+        "sqlquery": "fixed",
+        "sql": "SELECT rowid, * FROM feed",
+        "name": "db",
+        "x": 350,
+        "y": 120,
+        "wires": [
+            [
+                "7f246660.4a7fe8",
+                "dd763bbe.c88c2"
+            ]
+        ]
+    },
+    {
+        "id": "dd763bbe.c88c2",
+        "type": "debug",
+        "z": "c10c1a61.d89b",
+        "name": "msg",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "2838eb1e.180e3c",
+        "type": "http in",
+        "z": "c10c1a61.d89b",
+        "name": "",
+        "url": "/monitor/feed",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 340,
+        "wires": [
+            [
+                "a69672c5.913dc"
+            ]
+        ]
+    },
+    {
+        "id": "a69672c5.913dc",
+        "type": "template",
+        "z": "c10c1a61.d89b",
+        "name": "insert",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "INSERT INTO feed VALUES('{{payload.name}}', '{{{payload.url}}}')",
+        "output": "str",
+        "x": 390,
+        "y": 340,
+        "wires": [
+            [
+                "f8690576.84eb98"
+            ]
+        ]
+    },
+    {
+        "id": "f8690576.84eb98",
+        "type": "sqlite",
+        "z": "c10c1a61.d89b",
+        "mydb": "5d0b39f8.fb132",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "db",
+        "x": 570,
+        "y": 380,
+        "wires": [
+            [
+                "1fdc5671.2d566a"
+            ]
+        ]
+    },
+    {
+        "id": "b1ab2817.2ee68",
+        "type": "http in",
+        "z": "c10c1a61.d89b",
+        "name": "",
+        "url": "/monitor/feed/delete/:rowid",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 440,
+        "wires": [
+            [
+                "f62937b0.3e453"
+            ]
+        ]
+    },
+    {
+        "id": "f62937b0.3e453",
+        "type": "template",
+        "z": "c10c1a61.d89b",
+        "name": "delete",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "DELETE FROM feed WHERE rowid = {{req.params.rowid}}",
+        "output": "str",
+        "x": 390,
+        "y": 440,
+        "wires": [
+            [
+                "f8690576.84eb98"
+            ]
+        ]
     }
 ]

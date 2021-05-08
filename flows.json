@@ -21,6 +21,13 @@
         "info": ""
     },
     {
+        "id": "e0416e1d.7fff6",
+        "type": "tab",
+        "label": "email",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "5d0b39f8.fb132",
         "type": "sqlitedb",
         "db": "/db/techfeed-monitor.sqlite",
@@ -631,5 +638,19 @@
                 "f8690576.84eb98"
             ]
         ]
+    },
+    {
+        "id": "19baa07c.f5ec88",
+        "type": "e-mail",
+        "z": "e0416e1d.7fff6",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "tls": true,
+        "name": "",
+        "dname": "",
+        "x": 450,
+        "y": 180,
+        "wires": []
     }
 ]

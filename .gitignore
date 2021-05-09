@@ -67,6 +67,6 @@ typings/
 # MacOS system index files
 .DS_Store
 
-package-lock.json
 node_modules
 *.backup
+*.bak

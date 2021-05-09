@@ -31,7 +31,7 @@ RUN \
   ln -s /usr/bin/python3 /usr/bin/python && \
   rm -rf /var/lib/apt/lists/*
 
-COPY --chown=node-red:node-red ./src/* /data/
+COPY --chown=node-red:node-red ./* /data/
 
 USER node-red
 
@@ -41,7 +41,7 @@ RUN \
 ## Release
 FROM base AS release
 
-COPY --chown=node-red:node-red ./src/* /data/
+COPY --chown=node-red:node-red ./* /data/
 COPY --from=build --chown=node-red:node-red /data/node_modules /data/node_modules
 
 ENV PORT=1880

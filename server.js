@@ -62,7 +62,7 @@ function formatRoot(root) {
   return root;
 }
 
-if (!settings.httpRoot) {
+if (settings.httpRoot === false) {
   settings.httpAdminRoot = false;
   settings.httpNodeRoot = false;
 } else {
@@ -70,7 +70,7 @@ if (!settings.httpRoot) {
   settings.disableEditor = settings.disableEditor || false;
 }
 
-if (settings.httpAdminRoot) {
+if (settings.httpAdminRoot !== false) {
   settings.httpAdminRoot = formatRoot(
     settings.httpAdminRoot || settings.httpRoot || '/'
   );
@@ -79,7 +79,7 @@ if (settings.httpAdminRoot) {
   settings.disableEditor = true;
 }
 
-if (settings.httpNodeRoot) {
+if (settings.httpNodeRoot !== false) {
   settings.httpNodeRoot = formatRoot(
     settings.httpNodeRoot || settings.httpRoot || '/'
   );
@@ -87,7 +87,7 @@ if (settings.httpNodeRoot) {
 }
 
 if (!settings.uiPort) {
-  settings.uiPort = 1880;
+  settings.uiPort = process.env.PORT || 1880;
 }
 
 settings.uiHost = settings.uiHost || '0.0.0.0';

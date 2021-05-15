@@ -2,7 +2,10 @@ FROM node:16-buster-slim AS base
 
 RUN \
   apt-get update > /dev/null && \
-  apt-get install -qy perl-modules git && \
+  apt-get install -qy \
+    perl-modules \
+    git \
+    dumb-init && \
   deluser --remove-home node && \
   groupadd --gid 1000 node-red && \
   useradd --gid node-red --uid 1000 --shell /bin/bash --create-home node-red && \
@@ -36,13 +39,13 @@ COPY --chown=node-red:node-red ./* /data/
 USER node-red
 
 RUN \
-  npm install --production
+  npm ci --only=production
 
 ## Release
 FROM base AS release
 
 COPY --chown=node-red:node-red ./* /data/
-COPY --from=build --chown=node-red:node-red /data/node_modules /data/node_modules
+COPY --chown=node-red:node-red --from=build /data/node_modules /data/node_modules
 
 ENV PORT=1880
 ENV NODE_ENV=production
@@ -51,5 +54,7 @@ ENV NODE_RED_HOME=/data
 EXPOSE 1880
 
 USER node-red
+
+ENTRYPOINT ["dumb-init", "--"]
 
 CMD ["node", "/data/server.js", "/data/flows.json"]

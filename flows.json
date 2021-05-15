@@ -638,19 +638,5 @@
                 "f8690576.84eb98"
             ]
         ]
-    },
-    {
-        "id": "19baa07c.f5ec88",
-        "type": "e-mail",
-        "z": "e0416e1d.7fff6",
-        "server": "${SMTP_SERVER}",
-        "port": "${SMTP_PORT}",
-        "secure": true,
-        "tls": true,
-        "name": "${EMAIL_TO}",
-        "dname": "email",
-        "x": 450,
-        "y": 180,
-        "wires": []
     }
 ]
